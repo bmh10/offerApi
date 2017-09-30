@@ -1,20 +1,24 @@
-Offer API
+# Offer API
 
-General Info
+### General Info
 
- - App uses embedded Jetty for web server and Jersey + JAX-RS to provide RESTful API.
- 
- - To compile and run tests from commandline:
+* App uses embedded Jetty for web server
+* Jersey + JAX-RS libraries are used to provide RESTful API
+* Tests are written using JUnit and Mockito
+
+### Starting the server
+
+* To compile and run tests from commandline:
       mvn clean install
 
- - To run the server from commandline:
+* To run the server from commandline:
       mvn exec:java -Dexec.mainClass=org.offer.App
 
- - If on Linux run.sh can be executed to perform both of the above.
+* If on Linux run.sh can be executed to perform both of the above
 
- - Once the server is running, the offer API can be interacted with - see offerApiExamples.sh for example usage.
+* Once the server is running, the offer API can be interacted with - see offerApiExamples.sh for example usage
 
-Assumptions
+### Assumptions
 
- - Currently no security e.g. anyone can create an offer for any merchant.
- - Offers are currently just stored in memory so are lost when the server stops.
+ - Currently no security e.g. anyone can create an offer for any merchant
+ - Offers are currently just stored in memory so are lost when the server stops

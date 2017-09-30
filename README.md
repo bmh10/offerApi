@@ -8,14 +8,9 @@
 
 ### Starting the server
 
-* To compile and run tests from commandline:
-      mvn clean install
-
-* To run the server from commandline:
-      mvn exec:java -Dexec.mainClass=org.offer.App
-
+* To compile and run tests from commandline: mvn clean install
+* To run the server from commandline: mvn exec:java -Dexec.mainClass=org.offer.App
 * If on Linux run.sh can be executed to perform both of the above
-
 * Once the server is running, the offer API can be interacted with - see offerApiExamples.sh for example usage
 
 ### Assumptions

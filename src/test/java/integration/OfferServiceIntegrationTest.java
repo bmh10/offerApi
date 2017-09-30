@@ -98,6 +98,13 @@ public class OfferServiceIntegrationTest {
         service.createOffer(dto);
     }
 
+    @Test(expected = InvalidParameterException.class)
+    public void createOffer_withNegativePrice_throwsInvalidParameterException() throws InvalidParameterException, RequiredParameterException {
+        OfferDTO dto = OfferTestHelper.createOfferDTO();
+        dto.setPrice(BigDecimal.valueOf(-1));
+        service.createOffer(dto);
+    }
+
     @Test
     public void createOffer_withValidFields_returnsCreatedOffer() throws InvalidParameterException, RequiredParameterException {
         OfferDTO dto = OfferTestHelper.createOfferDTO();
@@ -154,6 +161,13 @@ public class OfferServiceIntegrationTest {
     public void updateOffer_withMissingPrice_throwsRequiredParameterException() throws OfferNotFoundException, RequiredParameterException, InvalidParameterException {
         OfferDTO dto = OfferTestHelper.createOfferDTO();
         dto.setPrice(null);
+        service.updateOffer(dto);
+    }
+
+    @Test(expected = InvalidParameterException.class)
+    public void updateOffer_withNegativePrice_throwsInvalidParameterException() throws OfferNotFoundException, RequiredParameterException, InvalidParameterException {
+        OfferDTO dto = OfferTestHelper.createOfferDTO();
+        dto.setPrice(BigDecimal.valueOf(-1));
         service.updateOffer(dto);
     }
 

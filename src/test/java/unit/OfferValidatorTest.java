@@ -10,6 +10,8 @@ import org.offer.validator.OfferValidatorImpl;
 import org.offer.validator.Validator;
 import util.OfferTestHelper;
 
+import java.math.BigDecimal;
+
 public class OfferValidatorTest {
 
     private Validator<OfferDTO> offerValidator;
@@ -65,6 +67,13 @@ public class OfferValidatorTest {
     public void validate_invalidCurrencyCode_throwsInvalidParameterException() throws InvalidParameterException, RequiredParameterException {
         OfferDTO offerDTO = OfferTestHelper.createOfferDTO();
         offerDTO.setCurrency("GBPXYZ");
+        offerValidator.validate(offerDTO, Operation.CREATE);
+    }
+
+    @Test(expected = InvalidParameterException.class)
+    public void validate_negativePrice_throwsInvalidParameterException() throws InvalidParameterException, RequiredParameterException {
+        OfferDTO offerDTO = OfferTestHelper.createOfferDTO();
+        offerDTO.setPrice(BigDecimal.valueOf(-1));
         offerValidator.validate(offerDTO, Operation.CREATE);
     }
 

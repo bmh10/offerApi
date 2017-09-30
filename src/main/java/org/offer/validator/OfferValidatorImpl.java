@@ -17,5 +17,6 @@ public class OfferValidatorImpl extends AbstractValidator<OfferDTO> {
         assertRequiredParam("currency", offerDTO.getCurrency());
         assertRequiredParam("price", offerDTO.getPrice());
         assertValidCurrency(offerDTO.getCurrency());
+        assertPositivePrice(offerDTO.getPrice());
     }
 }

@@ -3,12 +3,14 @@ package org.offer.validator;
 import org.offer.exception.InvalidParameterException;
 import org.offer.exception.RequiredParameterException;
 
+import java.math.BigDecimal;
 import java.util.Currency;
 
 public abstract class AbstractValidator<T> implements Validator<T> {
 
     private static final String REQUIRED_FIELD_ERR = "%s is a required parameter";
     private static final String INVALID_CURRENCY_ERR = "%s is not a valid currency code";
+    private static final String NEGATIVE_PRICE_ERR = "Cannot have negative price";
 
     protected void assertRequiredParam(String fieldName, String s) throws RequiredParameterException {
         if (s == null || s.isEmpty()) {
@@ -28,6 +30,12 @@ public abstract class AbstractValidator<T> implements Validator<T> {
         }
         catch (IllegalArgumentException e) {
             throw new InvalidParameterException(String.format(INVALID_CURRENCY_ERR, currencyCode));
+        }
+    }
+
+    protected void assertPositivePrice(BigDecimal price) throws InvalidParameterException {
+        if (price.signum() < 0) {
+            throw new InvalidParameterException(NEGATIVE_PRICE_ERR);
         }
     }
 }

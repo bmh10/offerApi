@@ -104,7 +104,6 @@ public class OfferDTO implements Serializable {
         if (price != null ? !price.equals(offerDTO.price) : offerDTO.price != null) return false;
         if (createdDate != null ? !createdDate.equals(offerDTO.createdDate) : offerDTO.createdDate != null) return false;
         return !(lastUpdatedDate != null ? !lastUpdatedDate.equals(offerDTO.lastUpdatedDate) : offerDTO.lastUpdatedDate != null);
-
     }
 
     @Override

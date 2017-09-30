@@ -97,7 +97,6 @@ public class Offer {
         if (price != null ? !price.equals(offer.price) : offer.price != null) return false;
         if (createdDate != null ? !createdDate.equals(offer.createdDate) : offer.createdDate != null) return false;
         return !(lastUpdatedDate != null ? !lastUpdatedDate.equals(offer.lastUpdatedDate) : offer.lastUpdatedDate != null);
-
     }
 
     @Override

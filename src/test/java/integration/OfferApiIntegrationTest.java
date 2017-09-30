@@ -105,6 +105,13 @@ public class OfferApiIntegrationTest {
     }
 
     @Test
+    public void createOffer_withNegativePrice_givesBadRequest() {
+        OfferDTO dto = OfferTestHelper.createOfferDTO();
+        dto.setPrice(BigDecimal.valueOf(-1));
+        Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), api.createOffer(dto).getStatus());
+    }
+
+    @Test
     public void createOffer_withValidFields_returnsCreatedOffer() {
         OfferDTO dto = OfferTestHelper.createOfferDTO();
         Response response = api.createOffer(dto);
@@ -154,6 +161,13 @@ public class OfferApiIntegrationTest {
     public void updateOffer_withMissingPrice_givesBadRequest() {
         OfferDTO dto = OfferTestHelper.createOfferDTO();
         dto.setPrice(null);
+        Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), api.updateOffer(dto.getId(), dto).getStatus());
+    }
+
+    @Test
+    public void updateOffer_withNegativePrice_givesBadRequest() {
+        OfferDTO dto = OfferTestHelper.createOfferDTO();
+        dto.setPrice(BigDecimal.valueOf(-1));
         Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), api.updateOffer(dto.getId(), dto).getStatus());
     }
 

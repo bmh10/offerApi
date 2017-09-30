@@ -22,7 +22,7 @@ public class OfferApiImpl extends AbstractApi implements OfferApi {
 
     /**
      * Gets all offers
-     * @return The collection of all offers
+     * @return Response object containing collection of all offers
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,7 +34,7 @@ public class OfferApiImpl extends AbstractApi implements OfferApi {
     /**
      * Gets offer with specified ID
      * @param id The offer ID
-     * @return The offer
+     * @return Response object containing the offer
      */
     @GET
     @Path("{id}")
@@ -52,7 +52,7 @@ public class OfferApiImpl extends AbstractApi implements OfferApi {
     /**
      * Creates offer from provided offer DTO
      * @param offerDTO The offer DTO
-     * @return The created offer
+     * @return Response object containing the created offer
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ public class OfferApiImpl extends AbstractApi implements OfferApi {
      * Updates offer with specified ID using provided offer DTO
      * @param id The offer ID
      * @param offerDTO The offer DTO
-     * @return The updated offer
+     * @return Response object containing the updated offer
      */
     @PUT
     @Path("{id}")
@@ -94,6 +94,7 @@ public class OfferApiImpl extends AbstractApi implements OfferApi {
     /**
      * Deletes offer with specified ID
      * @param id The offer ID
+     * @return Response object
      */
     @DELETE
     @Path("{id}")

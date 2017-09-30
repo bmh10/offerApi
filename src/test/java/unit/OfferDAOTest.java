@@ -4,27 +4,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.offer.dao.OfferDAO;
 import org.offer.dao.OfferDAOImpl;
-import org.offer.exception.InvalidParameterException;
 import org.offer.exception.OfferNotFoundException;
-import org.offer.exception.RequiredParameterException;
 import org.offer.model.Offer;
-import org.offer.model.Operation;
-import org.offer.model.dto.OfferDTO;
-import org.offer.service.OfferService;
-import org.offer.service.OfferServiceImpl;
-import org.offer.transformer.OfferTransformerImpl;
-import org.offer.validator.Validator;
 import util.OfferTestHelper;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Currency;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
-
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OfferDAOTest {
@@ -109,14 +100,11 @@ public class OfferDAOTest {
     }
 
     @Test
-    public void updateOffer_whenOfferFound_deletesOffer() throws OfferNotFoundException {
+    public void deleteOffer_whenOfferFound_deletesOffer() throws OfferNotFoundException {
         Offer offer = OfferTestHelper.createOffer();
         offerDAO.createOffer(offer);
         Assert.assertEquals(1, offerDAO.getAllOffers().size());
         offerDAO.deleteOffer(offer.getId());
         Assert.assertEquals(0, offerDAO.getAllOffers().size());
     }
-
-
-
 }
